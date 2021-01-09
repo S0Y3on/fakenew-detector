@@ -1,1 +1,1 @@
-# C-Study
+# fakenew-detector
