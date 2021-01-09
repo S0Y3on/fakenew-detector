@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	  <!-- 부트스트랩 -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../static/css/resultStyle.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic' rel='stylesheet' type='text/css'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"> <title>Result</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- 차트 링크 -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <meta charset="UTF-8">
+</head>
+
+
+
+
+<h1 class="charts--headline">{{input_text}}</h1>
+<div class="charts--container">
+  <ul class="chart">
+      <h3 class="chart--subHeadline">RESULT : {{result}}%</h3><br><br>
+	  <h1 class="chart--subHeadline">{{r}}</h1><br>
+  </ul>
+	</div>
+
+
+           <div id = 'donut_chart'>
+        <div class="row my-3">
+            <div class="col" >
+            </div>
+        </div>
+            <div id="donut_chart2">
+                    <canvas id="chDonut1"></canvas>
+            </div>
+    </div>
+	  	      <!-- 차트 -->
+    <script> // chart colors
+        var colors = ['red','blue','#c3e6cb','#fd6a74']; /* 3 donut charts */
+        var donutOptions = { cutoutPercentage: 30, //도넛두께 : 값이 클수록 얇아짐
+             legend: {position:'right', padding:5, labels: {pointStyle:'circle', usePointStyle:true}}
+        };
+        // donut 1
+        var chDonutData1 = { labels: ['False', 'True'], datasets: [ { backgroundColor: colors.slice(0,3), borderWidth: 0, data: [100-{{ result }}, {{result}}] } ] };
+        var chDonut1 = document.getElementById("chDonut1");
+        if (chDonut1) { new Chart(chDonut1, { type: 'pie', data: chDonutData1, options: donutOptions }); }
+    </script>
+
+
+
+
+
+
+
+
+<article>
+
+
+
+<!-- The Timeline -->
+
+<ul class="timeline">
+
+	<!-- Item 1 -->
+	<li>
+		<div class="direction-r">
+			<div class="flag-wrapper">
+				<span class="flag">{{ news_text0 }}</span>
+			</div><br><br>
+			<a href={{ news_href0 }}>▶관련기사 보기</a>
+		</div>
+	</li>
+
+	<!-- Item 2 -->
+	<li>
+		<div class="direction-l">
+			<div class="flag-wrapper">
+				<span class="flag">{{ news_text1 }}</span>
+
+			</div><br><br>
+			<a href={{ news_href1 }}>▶관련기사 보기</a>
+		</div>
+	</li>
+
+	<!-- Item 3 -->
+	<li>
+		<div class="direction-r">
+			<div class="flag-wrapper">
+				<span class="flag">{{ news_text2 }}</span>
+
+			</div><br><br>
+<!--			<div class="desc">{{ news_text2 }}</div>-->
+             <a href={{ news_href2 }}>▶관련기사 보기</a>
+		</div>
+	</li>
+	<!-- Item 4 -->
+	<li>
+		<div class="direction-l">
+			<div class="flag-wrapper">
+				<span class="flag">{{ news_text3 }}</span>
+
+			</div><br><br>
+			<a href={{ news_href3 }}>▶관련기사 보기</a>
+		</div>
+	</li>
+	<!-- Item 5 -->
+	<li>
+		<div class="direction-r">
+			<div class="flag-wrapper">
+				<span class="flag">{{ news_text4 }}</span>
+
+			</div><br><br>
+			<a href={{ news_href4 }}>▶관련기사 보기</a>
+		</div>
+	</li>
+</ul>
+</article>
+
+</html>
